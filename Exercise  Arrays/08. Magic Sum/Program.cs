@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 
 namespace _08._Magic_Sum
 {
@@ -21,5 +22,6 @@ namespace _08._Magic_Sum
                 }
             }
         }
+        
     }
 }

@@ -1,24 +1,36 @@
 ﻿using System;
+using System.Linq;
 
-namespace _01._Ages
+namespace _10._Multiply_Evens_by_Odds
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            int age = int.Parse(Console.ReadLine()!);
+            int number = int.Parse(Console.ReadLine());
+            number = Math.Abs(number);
+            int[] ints = Array.ConvertAll(number.ToString().ToArray(), x => (int)x - 48);
 
-            string result = age switch
+
+            int even = 0, odd = 0;
+            EvenOddSum(ints, ref even, ref odd);
+
+            Console.WriteLine(even * odd);
+        }
+
+        static void EvenOddSum(int[] ints, ref int even, ref int odd)
+        {
+            for (int i = 0; i < ints.Length; i++)
             {
-                >= 0 and <= 2 => "baby",
-                >= 3 and <= 13 => "child",
-                >= 14 and <= 19 => "teenager",
-                >= 20 and <= 65 => "adult",
-                >= 66 => "elder",
-                _ => throw new ArgumentOutOfRangeException()
-            };
-
-            Console.WriteLine(result);
+                if (ints[i] % 2 != 0)
+                {
+                    odd += ints[i];
+                }
+                else
+                {
+                    even += ints[i];
+                }
+            }
         }
     }
 }
